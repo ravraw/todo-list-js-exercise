@@ -1,11 +1,13 @@
 // Arrays to keep track of each task's state
 const taskTitles = [];
 const taskComplete = [];
+const taskDescription = [];
 
 // Create a new task by adding to the arrays
 // A new task will be created as incomplete
-function newTask(title) {
+function newTask(title, description) {
   taskTitles.push(title);
+  taskDescription.push(description);
   taskComplete.push(false);
 }
 
@@ -17,15 +19,24 @@ function completeTask(taskIndex) {
 // Print the state of a task to the console in a nice readable way
 function logTaskState(taskIndex) {
   const title = taskTitles[taskIndex];
+  const description = taskDescription[taskIndex];
   const complete = taskComplete[taskIndex];
-  console.log(`${title} has${complete ? " " : " not "}been completed`);
+  console.log(
+    ` ${taskIndex + 1} > ${title} : ${description} has${
+      complete ? ' ' : ' not '
+    }been completed`
+  );
 }
 
 // DRIVER CODE BELOW
 
-newTask("Clean Cat Litter"); // task 0
-newTask("Do Laundry"); // task 1
+newTask('Clean Cat Litter', 'Clean the cat litter and ensure cat is clean'); // task 0
+newTask('Do Laundry', 'Wash all dirty ,fold and keep clean laundry'); // task 1
+newTask(
+  'Object oriented programing',
+  'Complete lecture on object oriented programing'
+);
 
-logTaskState(0); // Clean Cat Litter has not been completed
-completeTask(0);
-logTaskState(0); // Clean Cat Litter has been completed
+logTaskState(2); // Clean Cat Litter has not been completed
+//completeTask(2);
+//logTaskState(2); // Clean Cat Litter has been completed
